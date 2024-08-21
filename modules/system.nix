@@ -36,7 +36,7 @@
 
   nix.settings.auto-optimise-store = true;
   nix.gc.automatic = true;
-  nix.gc.dates = "daily";
+  nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 7d";
 
   security.polkit.enable = true;
