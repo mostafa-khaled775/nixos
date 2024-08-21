@@ -15,7 +15,7 @@ in {
         MinimizeOnOpenUrl = true;
       };
       Browser.CustomProxyLocation = "";
-      Browser.Enable = true;
+      Browser.Enabled = true;
       FdoSecrets.Enabled = true;
       GUI = {
         ApplicationTheme = "classic";
