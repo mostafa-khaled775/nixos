@@ -30,17 +30,17 @@
         bash-language-server.command = "bash-language-server";
         dot-language-server.command = "dot-language-server";
         pylsp.command = "pylsp";
+        nil.command = "nil";
+        yaml-language-server.command = "yaml-language-server";
       };
     };
     extraPackages = with pkgs; [
       clang-tools
       rust-analyzer
-      nixd
+      nil
       nodePackages_latest.bash-language-server
       yaml-language-server
       dot-language-server
-      lua-language-server
-      jq-lsp
       python312Packages.python-lsp-server
     ];
   };
