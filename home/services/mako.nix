@@ -4,5 +4,6 @@
     borderRadius = 5;
     borderSize = 2;
     layer = "overlay";
+    timeout = 1000;
   };
 }
