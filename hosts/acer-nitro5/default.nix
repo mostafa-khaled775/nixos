@@ -10,8 +10,13 @@
 
   networking = {
     hostName = "mostafa-acer-nitro5";
-    networkmanager.enable = true;
-    firewall.enable = false;
+    wireless = {
+      enable = true;
+      environmentFile = config.sops.secrets."wireless.env".path;
+      networks = {
+        "@home_id@".psk = "@home_psk@";
+      };
+    };
   };
 
   hardware.bluetooth.enable = true;
@@ -20,7 +25,7 @@
 
   users.users.mostafa = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "networkmanager" ];
+    extraGroups = [ "wheel" "video" ];
     hashedPasswordFile = config.sops.secrets.mostafa_passwd.path;
   };
 

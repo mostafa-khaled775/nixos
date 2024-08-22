@@ -13,6 +13,7 @@
       mostafa_passwd = {
         neededForUsers = true;
       };
+      "wireless.env" = {};
     };
   };
   environment.systemPackages = with pkgs; [ age sops ];
