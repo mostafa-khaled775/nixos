@@ -32,9 +32,11 @@
         pylsp.command = "pylsp";
         nil.command = "nil";
         yaml-language-server.command = "yaml-language-server";
+        docker-langserver.command = "docker-langserver";
       };
     };
     extraPackages = with pkgs; [
+      dockerfile-language-server-nodejs
       clang-tools
       rust-analyzer
       nil
