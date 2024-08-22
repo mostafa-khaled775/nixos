@@ -33,6 +33,7 @@
         nil.command = "nil";
         yaml-language-server.command = "yaml-language-server";
         docker-langserver.command = "docker-langserver";
+        cmake-language-server.command = "cmake-language-server";
       };
     };
     extraPackages = with pkgs; [
@@ -44,6 +45,7 @@
       yaml-language-server
       dot-language-server
       python312Packages.python-lsp-server
+      cmake-language-server
     ];
   };
 }
