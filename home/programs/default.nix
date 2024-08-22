@@ -15,6 +15,7 @@
   ];
 
   programs = {
+    mpv.enable = true;
     direnv.enable = true;
     zoxide.enable = true;
     ripgrep.enable = true;
