@@ -49,6 +49,7 @@
       ./modules/hosts.nix
       ./modules/services.nix
       ./modules/system.nix
+      ./modules/virtualization.nix
       ./hosts/acer-nitro5
 
       home-manager.nixosModules.home-manager {

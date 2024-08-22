@@ -25,7 +25,7 @@
 
   users.users.mostafa = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" ];
+    extraGroups = [ "wheel" "video" "docker" ];
     hashedPasswordFile = config.sops.secrets.mostafa_passwd.path;
   };
 
