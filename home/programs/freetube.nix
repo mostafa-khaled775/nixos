@@ -1,0 +1,3 @@
+{ ... }: {
+  programs.freetube.enable = true;
+}

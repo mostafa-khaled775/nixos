@@ -6,6 +6,9 @@
     ./firefox.nix
     ./wofi.nix
 
+    # web
+    ./freetube.nix
+
     # editors
     ./zed.nix
     ./helix.nix
