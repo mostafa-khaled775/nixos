@@ -15,10 +15,9 @@
     printing.enable = true;
     openssh.enable = true;
     dbus.enable = true;
-    displayManager.enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
-    displayManager.sddm.extraPackages = [ pkgs.neatvnc ];
-    displayManager.sddm.wayland.compositor = "kwin";
+    greetd = {
+      enable = true;
+      settings.default_session.command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
+    };
   };
 }
