@@ -6,7 +6,7 @@
     defaultSopsFile = ./secrets.yaml;
     defaultSopsFormat = "yaml";
     age = {
-      keyFile = /home/mostafa/.config/sops/age/keys.txt;
+      keyFile = /var/lib/sops-nix/key.txt;
       generateKey = true;
     };
     secrets = {
