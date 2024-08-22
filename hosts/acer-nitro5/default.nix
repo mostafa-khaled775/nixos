@@ -21,6 +21,7 @@
   users.users.mostafa = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "networkmanager" ];
+    hashedPasswordFile = config.sops.secrets.mostafa_passwd.path;
   };
 
   programs.light.enable = true;
