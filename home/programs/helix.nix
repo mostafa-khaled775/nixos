@@ -34,6 +34,7 @@
         yaml-language-server.command = "yaml-language-server";
         docker-langserver.command = "docker-langserver";
         cmake-language-server.command = "cmake-language-server";
+        qmlls.command = "qmlls";
       };
     };
     extraPackages = with pkgs; [
@@ -46,6 +47,7 @@
       dot-language-server
       python312Packages.python-lsp-server
       cmake-language-server
+      kdePackages.qtdeclarative
     ];
   };
 }
