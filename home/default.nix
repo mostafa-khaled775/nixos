@@ -3,6 +3,7 @@
     ./programs
     ./window-managers
     ./services
+    ./xdg.nix
     ./accounts.nix
   ];
 
