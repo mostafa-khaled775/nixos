@@ -30,10 +30,11 @@
     languages = {
       language =
         let
-          lang = name: formatter-command: {
+          lang = name: formatter-command: args: {
             name = name;
             formatter = {
               command = formatter-command;
+              args = args;
             };
             auto-format = true;
             indent = {
@@ -43,13 +44,13 @@
           };
         in
         [
-          (lang "rust" "rustfmt")
-          (lang "c" "clang-format")
-          (lang "cpp" "clang-format")
-          (lang "yaml" "yamlfmt")
-          (lang "bash" "shfmt")
-          (lang "nix" "nixfmt")
-          (lang "python" "black")
+          (lang "rust" "rustfmt" [ ])
+          (lang "c" "clang-format" [ ])
+          (lang "cpp" "clang-format" [ ])
+          (lang "yaml" "yamlfmt" [ "-" ])
+          (lang "bash" "shfmt" [ ])
+          (lang "nix" "nixfmt" [ ])
+          (lang "python" "black" [ ])
         ];
       language-server = {
         rust-analyzer.command = "rust-analyzer";
