@@ -5,6 +5,7 @@
     userEmail = config.accounts.email.accounts.main.address;
     extraConfig = {
       init.defaultBranch = "master";
+      push.autoSetupRemote = true;
     };
     ignores = [
       ".envrc"
