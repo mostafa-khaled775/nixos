@@ -1,4 +1,5 @@
-{ pkgs, userName, ... }: {
+{ pkgs, userName, ... }:
+{
   imports = [
     ./keepassxc.nix
     ./git.nix
@@ -37,10 +38,16 @@
   };
 
   home.packages = with pkgs; [
-    fd tokei
-    yq-go jq
-    unzip p7zip ouch zip
+    fd
+    tokei
+    yq-go
+    jq
+    unzip
+    p7zip
+    ouch
+    zip
     tree
     wl-clipboard
+    act
   ];
 }
