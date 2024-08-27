@@ -5,7 +5,6 @@
     ./git.nix
     ./bash.nix
     ./firefox.nix
-    ./wofi.nix
 
     # web
     ./freetube.nix
@@ -34,7 +33,6 @@
     };
     mcfly.enable = true;
     bottom.enable = true;
-    foot.enable = true;
   };
 
   home.packages = with pkgs; [

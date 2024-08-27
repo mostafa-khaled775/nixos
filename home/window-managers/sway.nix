@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ ... }:
+{
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
@@ -8,9 +9,7 @@
       gaps = {
         inner = 3;
       };
-      menu = "${pkgs.wofi}/bin/wofi --show=drun";
-      modifier =  "Mod4";
-      terminal = "${pkgs.foot}/bin/foot";
+      modifier = "Mod4";
       input = {
         "type:touchpad" = {
           tap = "enabled";
@@ -21,5 +20,10 @@
         };
       };
     };
+  };
+  programs.foot.enable = true;
+  programs.fuzzel.enable = true;
+  programs.fuzzel.settings = {
+    main.terminal = "foot";
   };
 }
