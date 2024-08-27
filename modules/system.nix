@@ -1,9 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   fonts.fontconfig.enable = true;
   fonts.fontDir.enable = true;
   fonts.enableDefaultPackages = true;
 
-  environment.systemPackages = with pkgs; [ wget git ];
+  environment.systemPackages = with pkgs; [
+    wget
+    git
+  ];
   programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -28,7 +32,10 @@
     useXkbConfig = true; # use xkbOptions in tty.
   };
 
-  boot.supportedFilesystems = [ "ntfs" "bcachefs" ];
+  boot.supportedFilesystems = [
+    "ntfs"
+    "bcachefs"
+  ];
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -50,27 +57,31 @@
     xdgOpenUsePortal = true;
   };
 
+  environment.pathsToLink = [
+    "/share/xdg-desktop-portal"
+    "/share/applications"
+  ];
+
   stylix = {
     enable = true;
     image = pkgs.fetchurl {
-      url = 
-        "https://www.pixelstalk.net/wp-content/uploads/images6/Moon-Desktop-Wallpaper.jpg";
-        sha256 = "ut6bbnkxIyUEJsM2+YPm3A18hmMD6SpIJQ+tdshT1Sw=";
+      url = "https://www.pixelstalk.net/wp-content/uploads/images6/Moon-Desktop-Wallpaper.jpg";
+      sha256 = "ut6bbnkxIyUEJsM2+YPm3A18hmMD6SpIJQ+tdshT1Sw=";
+    };
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    fonts = {
+      sizes = {
+        terminal = 13;
+        applications = 13;
+        desktop = 11;
+        popups = 11;
       };
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-      fonts = {
-        sizes = {
-          terminal = 13;
-          applications = 13;
-          desktop = 11;
-          popups = 11;
-        };
-        monospace = {
-          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-          name = "JetBrainsMono Nerd Font";
-        };
+      monospace = {
+        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        name = "JetBrainsMono Nerd Font";
       };
     };
+  };
 
-    system.stateVersion = "24.05";
-  }
+  system.stateVersion = "24.05";
+}
