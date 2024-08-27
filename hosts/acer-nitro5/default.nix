@@ -1,12 +1,17 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   imports = [
     ./services.nix
     ./hardware-configuration.nix
     ./gpu.nix
   ];
-  nixpkgs.config.allowUnfreePredicate = pkg:
-  builtins.elem (lib.getName pkg)
-  (map lib.getName [ pkgs.intel-ocl ]);
+  nixpkgs.config.allowUnfreePredicate =
+    pkg: builtins.elem (lib.getName pkg) (map lib.getName [ pkgs.intel-ocl ]);
 
   networking = {
     hostName = "mostafa-acer-nitro5";
@@ -15,6 +20,7 @@
       environmentFile = config.sops.secrets."wireless.env".path;
       networks = {
         "@home_id@".psk = "@home_psk@";
+        "@p10_hotspot_id@".psk = "@p10_hotspot_psk@";
       };
     };
   };
@@ -25,14 +31,21 @@
 
   users.users.mostafa = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "docker" ];
+    extraGroups = [
+      "wheel"
+      "video"
+      "docker"
+    ];
     hashedPasswordFile = config.sops.secrets.mostafa_passwd.path;
   };
 
   programs.light.enable = true;
 
   swapDevices = [
-    { device = "/swap/swap"; size = 16*1024; }
+    {
+      device = "/swap/swap";
+      size = 16 * 1024;
+    }
   ];
 
   boot.initrd.luks.devices = {
@@ -47,44 +60,63 @@
   ];
 
   fileSystems = {
-    "/" =
-      { device = "/dev/mapper/nixos-nixos";
+    "/" = {
+      device = "/dev/mapper/nixos-nixos";
       fsType = "btrfs";
-      options = [ "subvol=root" "compress=zstd" ];
+      options = [
+        "subvol=root"
+        "compress=zstd"
+      ];
     };
 
-    "/home" =
-      { device = "/dev/mapper/nixos-nixos";
+    "/home" = {
+      device = "/dev/mapper/nixos-nixos";
       fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd" ];
+      options = [
+        "subvol=home"
+        "compress=zstd"
+      ];
     };
 
-    "/home/mostafa" =
-      { device = "/dev/mapper/nixos-nixos";
+    "/home/mostafa" = {
+      device = "/dev/mapper/nixos-nixos";
       fsType = "btrfs";
-      options = [ "subvol=home/mostafa" "compress=zstd" ];
+      options = [
+        "subvol=home/mostafa"
+        "compress=zstd"
+      ];
     };
 
-    "/swap" =
-      { device = "/dev/mapper/nixos-nixos";
+    "/swap" = {
+      device = "/dev/mapper/nixos-nixos";
       fsType = "btrfs";
-      options = [ "subvol=swap" "noatime" ];
+      options = [
+        "subvol=swap"
+        "noatime"
+      ];
     };
 
-    "/nix" =
-      { device = "/dev/mapper/nixos-nixos";
+    "/nix" = {
+      device = "/dev/mapper/nixos-nixos";
       fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+      options = [
+        "subvol=nix"
+        "compress=zstd"
+        "noatime"
+      ];
     };
 
-    "/snapshots" =
-      { device = "/dev/mapper/nixos-nixos";
+    "/snapshots" = {
+      device = "/dev/mapper/nixos-nixos";
       fsType = "btrfs";
-      options = [ "subvol=snapshots" "compress=zstd" ];
+      options = [
+        "subvol=snapshots"
+        "compress=zstd"
+      ];
     };
 
-    "/boot" =
-      { device = "/dev/disk/by-uuid/9CDD-97D4";
+    "/boot" = {
+      device = "/dev/disk/by-uuid/9CDD-97D4";
       fsType = "vfat";
     };
   };
