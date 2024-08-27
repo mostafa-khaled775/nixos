@@ -51,6 +51,7 @@
           (lang "bash" "shfmt" [ ])
           (lang "nix" "nixfmt" [ ])
           (lang "python" "black" [ ])
+          (lang "java" "google-java-format" [ ])
         ];
       language-server = {
         rust-analyzer.command = "rust-analyzer";
@@ -63,6 +64,7 @@
         nil.command = "nil";
         yaml-language-server.command = "yaml-language-server";
         docker-langserver.command = "docker-langserver";
+        jdtls.command = "jdtls";
       };
     };
     extraPackages = with pkgs; [
@@ -98,6 +100,10 @@
       python312Packages.pyflakes
       python312Packages.pycodestyle
       black
+
+      # java
+      jdt-language-server
+      google-java-format
     ];
   };
 }
