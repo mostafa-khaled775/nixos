@@ -42,6 +42,7 @@
     tokei
     yq-go
     jq
+    file
     unzip
     p7zip
     ouch
