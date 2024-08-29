@@ -1,10 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services = {
     udev = {
       enable = true;
-      packages = with pkgs; [
-        android-udev-rules
-      ];
+      packages = with pkgs; [ android-udev-rules ];
     };
     pipewire = {
       enable = true;
@@ -19,5 +18,6 @@
       enable = true;
       settings.default_session.command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
     };
+    jenkins.enable = true;
   };
 }
