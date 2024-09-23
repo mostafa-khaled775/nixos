@@ -10,7 +10,7 @@
     ./freetube.nix
 
     # editors
-    ./zed.nix
+    # ./zed.nix
     ./helix.nix
   ];
 
