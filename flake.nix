@@ -33,7 +33,7 @@
       ...
     }:
     {
-      nixosConfigurations.mostafa = nixpkgs.lib.nixosSystem rec {
+      nixosConfigurations.acer-nitro-5 = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs eriedaberrie-pkgs;
