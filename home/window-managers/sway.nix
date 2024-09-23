@@ -9,6 +9,7 @@
       gaps = {
         inner = 3;
       };
+      menu = "fuzzel";
       modifier = "Mod4";
       input = {
         "type:touchpad" = {
