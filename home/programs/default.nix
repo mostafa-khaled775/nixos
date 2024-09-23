@@ -10,7 +10,7 @@
     ./freetube.nix
 
     # editors
-    # ./zed.nix
+    ./zed.nix
     ./helix.nix
   ];
 
@@ -48,5 +48,6 @@
     tree
     wl-clipboard
     act
+    tor-browser
   ];
 }

@@ -3,12 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     eriedaberrie-pkgs = {
@@ -23,43 +20,53 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-wayland, stylix, eriedaberrie-pkgs, home-manager, disko, sops-nix, impermanence, ... }: {
-    nixosConfigurations.mostafa = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs eriedaberrie-pkgs; };
-      modules = [
-        stylix.nixosModules.stylix
-        ({ ... }: {
-          config = {
-            nix.settings = {
-            # add binary caches
-            trusted-public-keys = [
-              "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-              "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-            ];
-            substituters = [
-              "https://cache.nixos.org"
-              "https://nixpkgs-wayland.cachix.org"
-            ];
-          };
+  outputs =
+    inputs@{
+      nixpkgs,
+      nixpkgs-unstable,
+      stylix,
+      eriedaberrie-pkgs,
+      home-manager,
+      disko,
+      sops-nix,
+      impermanence,
+      ...
+    }:
+    {
+      nixosConfigurations.mostafa = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs eriedaberrie-pkgs;
+          pkgs-unstable = import nixpkgs-unstable { inherit system; };
         };
-      })
-      ({ ... }: { nixpkgs.overlays = [ eriedaberrie-pkgs.overlays.default nixpkgs-wayland.overlay ]; })
-      ./secrets/secrets.nix
-      ./modules/hosts.nix
-      ./modules/services.nix
-      ./modules/system.nix
-      ./modules/virtualization.nix
-      ./hosts/acer-nitro5
+        modules = [
+          stylix.nixosModules.stylix
+          (
+            { ... }:
+            {
+              nixpkgs.overlays = [ eriedaberrie-pkgs.overlays.default ];
+            }
+          )
+          ./secrets/secrets.nix
+          ./modules/hosts.nix
+          ./modules/services.nix
+          ./modules/system.nix
+          ./modules/virtualization.nix
+          ./hosts/acer-nitro5
 
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.mostafa = import ./home;
-        home-manager.extraSpecialArgs = { inherit eriedaberrie-pkgs; userName = "Mostafa Khaled"; };
-        home-manager.backupFileExtension = "backup";
-      }
-    ];
-  };
-};
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.mostafa = import ./home;
+            home-manager.extraSpecialArgs = {
+              inherit eriedaberrie-pkgs;
+              pkgs-unstable = specialArgs.pkgs-unstable;
+              userName = "Mostafa Khaled";
+            };
+            home-manager.backupFileExtension = "backup";
+          }
+        ];
+      };
+    };
 }

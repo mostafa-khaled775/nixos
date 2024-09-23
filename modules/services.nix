@@ -19,5 +19,12 @@
       settings.default_session.command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
     };
     jenkins.enable = true;
+    vaultwarden = {
+      enable = true;
+      config = {
+        ROCKET_ADDRESS = "::1";
+        ROCKET_PORT = 8222;
+      };
+    };
   };
 }

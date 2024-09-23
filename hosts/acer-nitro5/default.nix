@@ -9,6 +9,7 @@
     ./services.nix
     ./hardware-configuration.nix
     ./gpu.nix
+    ./disko.nix
   ];
   nixpkgs.config.allowUnfreePredicate =
     pkg: builtins.elem (lib.getName pkg) (map lib.getName [ pkgs.intel-ocl ]);
