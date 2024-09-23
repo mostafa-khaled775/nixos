@@ -11,6 +11,8 @@
     ./gpu.nix
     ./disko.nix
   ];
+  disko.devices.disk.main.device = "/dev/nvme0n1";
+
   nixpkgs.config.allowUnfreePredicate =
     pkg: builtins.elem (lib.getName pkg) (map lib.getName [ pkgs.intel-ocl ]);
 
@@ -60,65 +62,4 @@
     "cryptd"
   ];
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/mapper/nixos-nixos";
-      fsType = "btrfs";
-      options = [
-        "subvol=root"
-        "compress=zstd"
-      ];
-    };
-
-    "/home" = {
-      device = "/dev/mapper/nixos-nixos";
-      fsType = "btrfs";
-      options = [
-        "subvol=home"
-        "compress=zstd"
-      ];
-    };
-
-    "/home/mostafa" = {
-      device = "/dev/mapper/nixos-nixos";
-      fsType = "btrfs";
-      options = [
-        "subvol=home/mostafa"
-        "compress=zstd"
-      ];
-    };
-
-    "/swap" = {
-      device = "/dev/mapper/nixos-nixos";
-      fsType = "btrfs";
-      options = [
-        "subvol=swap"
-        "noatime"
-      ];
-    };
-
-    "/nix" = {
-      device = "/dev/mapper/nixos-nixos";
-      fsType = "btrfs";
-      options = [
-        "subvol=nix"
-        "compress=zstd"
-        "noatime"
-      ];
-    };
-
-    "/snapshots" = {
-      device = "/dev/mapper/nixos-nixos";
-      fsType = "btrfs";
-      options = [
-        "subvol=snapshots"
-        "compress=zstd"
-      ];
-    };
-
-    "/boot" = {
-      device = "/dev/disk/by-uuid/9CDD-97D4";
-      fsType = "vfat";
-    };
-  };
 }
