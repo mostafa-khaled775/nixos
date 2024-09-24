@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
-    sops-nix.url = "github:Mic92/sops-nix";
+    agenix.url = "github:ryantm/agenix";
     stylix.url = "github:danth/stylix";
   };
 
@@ -28,7 +28,7 @@
       eriedaberrie-pkgs,
       home-manager,
       disko,
-      sops-nix,
+      agenix,
       impermanence,
       ...
     }:
@@ -40,6 +40,7 @@
           pkgs-unstable = import nixpkgs-unstable { inherit system; };
         };
         modules = [
+          agenix.nixosModules.default
           stylix.nixosModules.stylix
           disko.nixosModules.default
           impermanence.nixosModules.impermanence
@@ -50,7 +51,7 @@
               nixpkgs.overlays = [ eriedaberrie-pkgs.overlays.default ];
             }
           )
-          ./secrets/secrets.nix
+          ./secrets
           ./modules/hosts.nix
           ./modules/services.nix
           ./modules/system.nix

@@ -1,20 +1,14 @@
-{ inputs, pkgs, ... }: {
-  imports = [
-    inputs.sops-nix.nixosModules.sops
+let
+  mostafa-public-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAaZfe/Q374domiYN3YkuxkifqR9sHMvdH4Wk+tOxdXG";
+  acer-nitro-5-public-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJirUsYE2PH/2BhyQFJGWjui+ohdydrfWirF0Am34oyD";
+in
+{
+  "mostafa-passwd.age".publicKeys = [
+    mostafa-public-key
+    acer-nitro-5-public-key
   ];
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    defaultSopsFormat = "yaml";
-    age = {
-      keyFile = /var/lib/sops-nix/key.txt;
-      generateKey = true;
-    };
-    secrets = {
-      mostafa_passwd = {
-        neededForUsers = true;
-      };
-      "wireless.env" = {};
-    };
-  };
-  environment.systemPackages = with pkgs; [ age sops ];
+  "wireless-env.age".publicKeys = [
+    mostafa-public-key
+    acer-nitro-5-public-key
+  ];
 }
