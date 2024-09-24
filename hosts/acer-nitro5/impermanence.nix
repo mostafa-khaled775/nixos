@@ -1,9 +1,9 @@
-{ lib, disk-label, ... }:
+{ lib, ... }:
 {
 
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
-    mount /dev/disk/by-label/${disk-label} /btrfs_tmp
+    mount /dev/disk/by-label/nixos /btrfs_tmp
     if [[ -e /btrfs_tmp/root ]]; then
         mkdir -p /btrfs_tmp/old_roots
         timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
@@ -27,14 +27,6 @@
   '';
 
   fileSystems."/persist".neededForBoot = true;
+  fileSystems."/log".neededForBoot = true;
 
-  # environment.persistence."/persistent" = {
-  #   enable = true;
-  #   directories = [
-  #     "/var/log"
-  #     "/var/lib/bluetooth"
-  #     "/var/lib/nixos"
-  #     "/var/lib/systemd/coredump"
-  #   ];
-  # };
 }

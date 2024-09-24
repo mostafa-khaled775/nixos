@@ -43,7 +43,6 @@
     file
     unzip
     p7zip
-    ouch
     zip
     tree
     wl-clipboard

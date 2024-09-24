@@ -1,6 +1,6 @@
-{ disk-label, ... }:
 {
   disko.devices.disk.main = {
+    device = "/dev/nvme0n1";
     type = "disk";
     content = {
       type = "gpt";
@@ -20,8 +20,6 @@
           content = {
             type = "luks";
             name = "crypted";
-            # disable settings.keyFile if you want to use interactive password entry
-            #passwordFile = "/tmp/secret.key"; # Interactive
             settings = {
               allowDiscards = true;
             };
@@ -29,7 +27,7 @@
               type = "btrfs";
               extraArgs = [
                 "-L"
-                "${disk-label}"
+                "nixos"
                 "-f"
               ];
               subvolumes = {
@@ -80,5 +78,4 @@
       };
     };
   };
-
 }

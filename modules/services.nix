@@ -1,10 +1,7 @@
 { pkgs, ... }:
 {
   services = {
-    udev = {
-      enable = true;
-      packages = with pkgs; [ android-udev-rules ];
-    };
+    udev.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -18,7 +15,6 @@
       enable = true;
       settings.default_session.command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
     };
-    jenkins.enable = true;
     vaultwarden = {
       enable = true;
       config = {
