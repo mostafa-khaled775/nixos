@@ -42,6 +42,8 @@
         modules = [
           stylix.nixosModules.stylix
           disko.nixosModules.default
+          impermanence.nixosModules.impermanence
+
           (
             { ... }:
             {

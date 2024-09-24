@@ -1,3 +1,4 @@
+{ disk-label, ... }:
 {
   disko.devices.disk.main = {
     type = "disk";
@@ -28,7 +29,7 @@
               type = "btrfs";
               extraArgs = [
                 "-L"
-                "nixos"
+                "${disk-label}"
                 "-f"
               ];
               subvolumes = {
@@ -80,6 +81,4 @@
     };
   };
 
-  fileSystems."/persist".neededForBoot = true;
-  fileSystems."/var/log".neededForBoot = true;
 }

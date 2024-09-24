@@ -9,7 +9,11 @@
     ./services.nix
     ./hardware-configuration.nix
     ./gpu.nix
-    ./disko.nix
+    (import ./disko.nix { disk-label = "nixos"; })
+    (import ./impermanence.nix {
+      disk-label = "nixos";
+      inherit lib;
+    })
   ];
   disko.devices.disk.main.device = "/dev/nvme0n1";
 
