@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ./gpu.nix
     ./disko.nix
-    # ./impermanence.nix
+    ./impermanence.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate =

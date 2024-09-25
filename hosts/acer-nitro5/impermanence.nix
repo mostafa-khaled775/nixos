@@ -26,7 +26,4 @@
     umount /btrfs_tmp
   '';
 
-  fileSystems."/persist".neededForBoot = true;
-  fileSystems."/log".neededForBoot = true;
-
 }
