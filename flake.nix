@@ -16,6 +16,7 @@
     agenix.url = "github:ryantm/agenix";
     stylix.url = "github:danth/stylix";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs =
@@ -29,16 +30,15 @@
       agenix,
       impermanence,
       pre-commit-hooks,
+      treefmt-nix,
+      systems,
       ...
     }:
     let
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      # Small tool to iterate over each systems
+      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+      # Eval the treefmt modules from ./treefmt.nix
+      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     {
       nixosConfigurations.acer-nitro-5 = nixpkgs.lib.nixosSystem rec {
@@ -74,8 +74,10 @@
           }
         ];
       };
-      checks = forAllSystems (system: {
-        pre-commit-check = pre-commit-hooks.lib.${system}.run {
+      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+      checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+        pre-commit-check = pre-commit-hooks.lib.${pkgs.system}.run {
           src = ./.;
           hooks = {
             nixfmt-rfc-style.enable = true;
@@ -83,10 +85,10 @@
           };
         };
       });
-      devShells = forAllSystems (system: {
-        default = nixpkgs.legacyPackages.${system}.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+      devShells = eachSystem (pkgs: {
+        default = nixpkgs.legacyPackages.${pkgs.system}.mkShell {
+          inherit (self.checks.${pkgs.system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${pkgs.system}.pre-commit-check.enabledPackages;
         };
       });
     };
