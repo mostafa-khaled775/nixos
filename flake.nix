@@ -15,19 +15,30 @@
     impermanence.url = "github:nix-community/impermanence";
     agenix.url = "github:ryantm/agenix";
     stylix.url = "github:danth/stylix";
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =
-    inputs@{
-      nixpkgs,
-      nixpkgs-unstable,
-      stylix,
-      home-manager,
-      disko,
-      agenix,
-      impermanence,
-      ...
+    inputs@{ self
+    , nixpkgs
+    , nixpkgs-unstable
+    , stylix
+    , home-manager
+    , disko
+    , agenix
+    , impermanence
+    , pre-commit-hooks
+    , ...
     }:
+    let
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    in
     {
       nixosConfigurations.acer-nitro-5 = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
@@ -62,5 +73,19 @@
           }
         ];
       };
+      checks = forAllSystems (system: {
+        pre-commit-check = pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixpkgs-fmt.enable = true;
+          };
+        };
+      });
+      devShells = forAllSystems (system: {
+        default = nixpkgs.legacyPackages.${system}.mkShell {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+        };
+      });
     };
 }
