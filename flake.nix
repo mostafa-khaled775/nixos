@@ -19,16 +19,17 @@
   };
 
   outputs =
-    inputs@{ self
-    , nixpkgs
-    , nixpkgs-unstable
-    , stylix
-    , home-manager
-    , disko
-    , agenix
-    , impermanence
-    , pre-commit-hooks
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      stylix,
+      home-manager,
+      disko,
+      agenix,
+      impermanence,
+      pre-commit-hooks,
+      ...
     }:
     let
       supportedSystems = [
@@ -77,7 +78,8 @@
         pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
-            nixpkgs-fmt.enable = true;
+            nixfmt-rfc-style.enable = true;
+            deadnix.enable = true;
           };
         };
       });
