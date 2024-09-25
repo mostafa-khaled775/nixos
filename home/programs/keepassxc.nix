@@ -1,10 +1,9 @@
 { pkgs, ... }:
 let
   iniFormat = pkgs.formats.ini { };
-in {
-  home.packages = [
-    pkgs.keepassxc
-  ];
+in
+{
+  home.packages = [ pkgs.keepassxc ];
 
   xdg.configFile."keepassxc/keepassxc.ini" = {
     enable = true;
