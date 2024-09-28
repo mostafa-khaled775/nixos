@@ -59,6 +59,7 @@
           ./modules/system.nix
           ./modules/virtualization.nix
           ./modules/impermanence.nix
+          ./modules/registry.nix
           ./hosts/acer-nitro5
 
           home-manager.nixosModules.home-manager
