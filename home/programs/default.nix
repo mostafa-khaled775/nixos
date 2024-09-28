@@ -48,5 +48,7 @@
     wl-clipboard
     act
     tor-browser
+
+    pomodoro-gtk
   ];
 }
