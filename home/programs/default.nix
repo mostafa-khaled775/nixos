@@ -50,5 +50,7 @@
     tor-browser
 
     pomodoro-gtk
+
+    just
   ];
 }
