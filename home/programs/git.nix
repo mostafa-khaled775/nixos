@@ -1,5 +1,14 @@
 { pkgs, config, ... }:
 {
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        email = config.programs.git.userEmail;
+        name = config.programs.git.userName;
+      };
+    };
+  };
   programs.git = {
     enable = true;
     userName = config.accounts.email.accounts.main.userName;
