@@ -12,7 +12,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence";
+    # impermanence.url = "github:nix-community/impermanence";
     agenix.url = "github:ryantm/agenix";
     stylix.url = "github:danth/stylix";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
@@ -28,7 +28,7 @@
       home-manager,
       disko,
       agenix,
-      impermanence,
+      # impermanence,
       pre-commit-hooks,
       treefmt-nix,
       systems,
@@ -51,7 +51,7 @@
           agenix.nixosModules.default
           stylix.nixosModules.stylix
           disko.nixosModules.default
-          impermanence.nixosModules.impermanence
+          # impermanence.nixosModules.impermanence
 
           ./secrets
           ./modules/hosts.nix
