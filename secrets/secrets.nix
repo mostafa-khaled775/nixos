@@ -7,7 +7,7 @@ in
     mostafa-public-key
     acer-nitro-5-public-key
   ];
-  "wireless-env.age".publicKeys = [
+  "wireless-secrets.age".publicKeys = [
     mostafa-public-key
     acer-nitro-5-public-key
   ];

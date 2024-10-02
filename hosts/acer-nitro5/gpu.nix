@@ -1,8 +1,7 @@
 { pkgs, ... }:
 {
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [
     intel-media-driver
     intel-ocl
     intel-vaapi-driver

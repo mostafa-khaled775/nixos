@@ -2,10 +2,9 @@
   description = "nixos configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
@@ -23,7 +22,6 @@
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-unstable,
       stylix,
       home-manager,
       disko,
@@ -45,7 +43,6 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
-          pkgs-unstable = import nixpkgs-unstable { inherit system; };
         };
         modules = [
           agenix.nixosModules.default
@@ -68,7 +65,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.mostafa = import ./home;
             home-manager.extraSpecialArgs = {
-              pkgs-unstable = specialArgs.pkgs-unstable;
               userName = "Mostafa Khaled";
             };
             home-manager.backupFileExtension = "backup";

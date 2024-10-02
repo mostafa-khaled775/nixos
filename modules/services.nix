@@ -13,7 +13,7 @@
     dbus.enable = true;
     greetd = {
       enable = true;
-      settings.default_session.command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
+      settings.default_session.command = ''${pkgs.greetd.greetd}/bin/agreety --cmd sway'';
     };
     vaultwarden = {
       enable = true;

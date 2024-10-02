@@ -54,8 +54,10 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    # gtk portal needed to make gtk apps happy
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
+    ];
     config.common.default = "*";
     xdgOpenUsePortal = true;
   };

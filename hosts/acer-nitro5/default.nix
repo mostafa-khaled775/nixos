@@ -20,10 +20,9 @@
     hostName = "mostafa-acer-nitro5";
     wireless = {
       enable = true;
-      environmentFile = config.age.secrets.wireless-env.path;
+      secretsFile = config.age.secrets.wireless-secrets.path;
       networks = {
-        "@home_id@".psk = "@home_psk@";
-        "@p10_hotspot_id@".psk = "@p10_hotspot_psk@";
+        "Vodafone_A-M".pskRaw = "ext:psk_home";
       };
     };
   };
