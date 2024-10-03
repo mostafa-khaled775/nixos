@@ -5,6 +5,7 @@
     ./git.nix
     ./bash.nix
     ./firefox.nix
+    ./thunderbird.nix
 
     # web
     ./freetube.nix
