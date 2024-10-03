@@ -20,6 +20,8 @@
       OverrideFirstRunPage = "";
       OverridePostUpdatePage = "";
       DontCheckDefaultBrowser = true;
+      OfferToSaveLogins = false;
+      PasswordManagerEnabled = false;
     };
 
     profiles.default = {
