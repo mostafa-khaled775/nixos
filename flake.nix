@@ -16,6 +16,10 @@
     stylix.url = "github:danth/stylix";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,6 +34,7 @@
       pre-commit-hooks,
       treefmt-nix,
       systems,
+      lanzaboote,
       ...
     }:
     let
@@ -48,6 +53,7 @@
           agenix.nixosModules.default
           stylix.nixosModules.stylix
           disko.nixosModules.default
+          lanzaboote.nixosModules.lanzaboote
           # impermanence.nixosModules.impermanence
 
           ./secrets

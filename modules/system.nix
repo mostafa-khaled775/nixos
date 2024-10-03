@@ -36,10 +36,6 @@
     "ntfs"
     "bcachefs"
   ];
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
 
   nix.settings = {
     auto-optimise-store = true;

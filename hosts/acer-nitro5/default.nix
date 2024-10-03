@@ -11,6 +11,7 @@
     ./gpu.nix
     ./disko.nix
     ./impermanence.nix
+    ./secureboot.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate =
