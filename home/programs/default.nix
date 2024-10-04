@@ -25,6 +25,7 @@
     bat.enable = true;
     lsd.enable = true;
     lsd.enableAliases = true;
+    yt-dlp.enable = true;
     pandoc = {
       defaults = {
         metadata = {
