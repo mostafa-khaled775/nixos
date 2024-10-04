@@ -6,6 +6,7 @@
     ./bash.nix
     ./firefox.nix
     ./thunderbird.nix
+    ./obs.nix
 
     # web
     ./freetube.nix
