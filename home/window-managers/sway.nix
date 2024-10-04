@@ -22,6 +22,9 @@
       };
     };
   };
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "sway";
+  };
   programs.foot.enable = true;
   programs.fuzzel.enable = true;
   programs.fuzzel.settings = {
