@@ -1,15 +1,10 @@
 { pkgs, userName, ... }:
 {
   imports = [
-    ./keepassxc.nix
     ./git.nix
     ./bash.nix
     ./firefox.nix
     ./thunderbird.nix
-    ./obs.nix
-
-    # web
-    ./freetube.nix
 
     # editors
     ./zed.nix
@@ -49,11 +44,10 @@
     zip
     tree
     wl-clipboard
-    act
     tor-browser
 
-    pomodoro-gtk
-
     just
+
+    anki
   ];
 }
