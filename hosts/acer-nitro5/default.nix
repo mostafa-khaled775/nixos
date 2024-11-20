@@ -12,6 +12,7 @@
     ./disko.nix
     ./impermanence.nix
     ./secureboot.nix
+    ./tpm.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate =
