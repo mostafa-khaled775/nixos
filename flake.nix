@@ -57,6 +57,7 @@
           # impermanence.nixosModules.impermanence
 
           ./secrets
+          ./modules/sddm.nix
           ./modules/hosts.nix
           ./modules/services.nix
           ./modules/system.nix
