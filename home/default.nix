@@ -8,6 +8,8 @@
     ./accounts.nix
   ];
 
+  qt.enable = true;
+  gtk.enable = true;
   fonts.fontconfig.enable = true;
 
   home.username = "mostafa";
