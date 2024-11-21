@@ -63,26 +63,5 @@
     "/share/applications"
   ];
 
-  stylix = {
-    enable = true;
-    image = pkgs.fetchurl {
-      url = "https://www.pixelstalk.net/wp-content/uploads/images6/Moon-Desktop-Wallpaper.jpg";
-      sha256 = "ut6bbnkxIyUEJsM2+YPm3A18hmMD6SpIJQ+tdshT1Sw=";
-    };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    fonts = {
-      sizes = {
-        terminal = 13;
-        applications = 13;
-        desktop = 11;
-        popups = 11;
-      };
-      monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        name = "JetBrainsMono Nerd Font";
-      };
-    };
-  };
-
   system.stateVersion = "24.05";
 }
