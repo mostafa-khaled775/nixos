@@ -14,6 +14,11 @@
     # impermanence.url = "github:nix-community/impermanence";
     agenix.url = "github:ryantm/agenix";
     stylix.url = "github:danth/stylix";
+    wallpapers = {
+      url = "github:VipinVIP/wallpapers";
+      flake = false;
+    };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     lanzaboote = {
@@ -26,6 +31,7 @@
     inputs@{
       self,
       nixpkgs,
+      chaotic,
       stylix,
       home-manager,
       disko,
@@ -54,6 +60,7 @@
           stylix.nixosModules.stylix
           disko.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
+          chaotic.nixosModules.default
           # impermanence.nixosModules.impermanence
 
           ./secrets

@@ -1,11 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   stylix = {
     enable = true;
-    image = pkgs.fetchurl {
-      url = "https://www.pixelstalk.net/wp-content/uploads/images6/Moon-Desktop-Wallpaper.jpg";
-      sha256 = "ut6bbnkxIyUEJsM2+YPm3A18hmMD6SpIJQ+tdshT1Sw=";
-    };
+    image = "${inputs.wallpapers}/minimalistic/catppuccin_triangle.png";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     fonts = {
       sizes = {
@@ -21,11 +18,8 @@
     };
   };
   services.displayManager.sddm = {
-    extraPackages = [ pkgs.catppuccin-sddm ];
-    theme = "catppuccin-mocha";
+    theme = "${pkgs.catppuccin-sddm}/share/sddm/themes/catppuccin-mocha";
   };
-  home-manager.users.mostafa.stylix.targets.helix = {
-    enable = false;
-    settings.theme = "catppuccin_mocha";
-  };
+  home-manager.users.mostafa.stylix.targets.helix.enable = false;
+  home-manager.users.mostafa.programs.helix.settings.theme = "catppuccin_mocha";
 }
