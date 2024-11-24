@@ -14,6 +14,7 @@
       "rst"
       "make"
       "graphviz"
+      "go"
     ];
     userKeymaps = { };
     userSettings = {
@@ -22,6 +23,7 @@
         metrics = false;
         diagnostics = false;
       };
+      load_direnv = "shell_hook";
     };
   };
 }

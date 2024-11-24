@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 {
   stylix = {
     enable = true;
@@ -20,6 +25,24 @@
   services.displayManager.sddm = {
     theme = "${pkgs.catppuccin-sddm}/share/sddm/themes/catppuccin-mocha";
   };
-  home-manager.users.mostafa.stylix.targets.helix.enable = false;
-  home-manager.users.mostafa.programs.helix.settings.theme = "catppuccin_mocha";
+  home-manager.users.mostafa = {
+    stylix.targets.helix.enable = false;
+    programs.helix.settings.theme = "catppuccin_mocha";
+    programs.zed-editor = {
+      extensions = [
+        "catppuccin"
+      ];
+      userSettings = {
+        theme = {
+          mode = "dark";
+          dark = "Catppuccin Mocha";
+        };
+        ui_font_family = config.stylix.fonts.sansSerif.name;
+        ui_font_size = config.stylix.fonts.sizes.applications;
+        buffer_font_family = config.stylix.fonts.monospace.name;
+        buffer_font_size = config.stylix.fonts.sizes.terminal;
+      };
+    };
+  };
+
 }
