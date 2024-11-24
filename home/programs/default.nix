@@ -3,8 +3,11 @@
   imports = [
     ./git.nix
     ./bash.nix
+
+    # desktop
     ./firefox.nix
     ./thunderbird.nix
+    ./discord.nix
 
     # editors
     ./zed.nix
