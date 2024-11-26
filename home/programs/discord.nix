@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.vesktop
+    pkgs.legcord
   ];
   home.shellAliases = {
-    discord = "vesktop";
+    discord = "legcord";
   };
 }
