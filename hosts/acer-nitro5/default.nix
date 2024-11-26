@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
+{ pkgs, config, ... }:
 {
   imports = [
     ./services.nix
@@ -14,9 +9,6 @@
     ./secureboot.nix
     ./tpm.nix
   ];
-
-  nixpkgs.config.allowUnfreePredicate =
-    pkg: builtins.elem (lib.getName pkg) (map lib.getName [ pkgs.intel-ocl ]);
 
   networking = {
     hostName = "mostafa-acer-nitro5";
