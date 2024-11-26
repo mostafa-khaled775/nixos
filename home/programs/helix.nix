@@ -52,6 +52,7 @@
           (lang "nix" "nixfmt" [ ])
           (lang "python" "black" [ ])
           (lang "java" "google-java-format" [ ])
+          (lang "go" "gopls" [ ])
         ];
       language-server = {
         rust-analyzer.command = "rust-analyzer";
@@ -104,6 +105,10 @@
       # java
       jdt-language-server
       google-java-format
+
+      # go
+      go
+      gopls
     ];
   };
 }
