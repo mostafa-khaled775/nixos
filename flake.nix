@@ -74,6 +74,7 @@
           ./modules/registry.nix
           ./modules/v4l2loopback.nix
           ./modules/theming.nix
+          ./modules/unfree.nix
           ./hosts/acer-nitro5
 
           home-manager.nixosModules.home-manager
