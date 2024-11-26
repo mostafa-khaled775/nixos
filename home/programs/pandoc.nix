@@ -1,6 +1,6 @@
 { pkgs, userName, ... }:
 {
-  pandoc = {
+  programs.pandoc = {
     defaults = {
       pdf-engine = "tectonic";
       metadata = {
