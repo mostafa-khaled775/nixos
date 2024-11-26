@@ -1,8 +1,10 @@
-{ pkgs, userName, ... }:
+{ pkgs, ... }:
 {
   imports = [
+    # cli
     ./git.nix
     ./bash.nix
+    ./pandoc.nix
 
     # desktop
     ./firefox.nix
@@ -24,14 +26,6 @@
     lsd.enable = true;
     lsd.enableAliases = true;
     yt-dlp.enable = true;
-    pandoc = {
-      defaults = {
-        metadata = {
-          author = userName;
-        };
-      };
-      enable = true;
-    };
     mcfly.enable = true;
     bottom.enable = true;
   };
