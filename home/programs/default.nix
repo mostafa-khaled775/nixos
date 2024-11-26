@@ -10,6 +10,7 @@
     ./firefox.nix
     ./thunderbird.nix
     ./discord.nix
+    ./zulip.nix
 
     # editors
     ./zed.nix
