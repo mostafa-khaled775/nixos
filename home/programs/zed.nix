@@ -23,6 +23,7 @@
         metrics = false;
         diagnostics = false;
       };
+      base_keymap = "Emacs";
       load_direnv = "shell_hook";
     };
   };
