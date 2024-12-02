@@ -8,6 +8,7 @@
 
     # desktop
     ./firefox.nix
+    ./chromium.nix
     ./thunderbird.nix
     ./discord.nix
     ./zulip.nix
