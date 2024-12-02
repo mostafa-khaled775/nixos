@@ -11,12 +11,5 @@
     printing.enable = true;
     openssh.enable = true;
     dbus.enable = true;
-    vaultwarden = {
-      enable = true;
-      config = {
-        ROCKET_ADDRESS = "::1";
-        ROCKET_PORT = 8222;
-      };
-    };
   };
 }
