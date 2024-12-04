@@ -1,6 +1,5 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  programs.sway.enable = true;
   services.xserver.displayManager.gdm = {
     wayland = true;
     enable = true;
@@ -11,8 +10,18 @@
     waylandCompositors = {
       sway = {
         prettyName = "Sway";
-        comment = "Sway compositor managed by UWSM";
-        binPath = "/run/current-system/sw/bin/sway";
+        comment = "i3-compatible Wayland compositor.";
+        binPath = "${pkgs.sway}/bin/sway";
+      };
+      niri = {
+        prettyName = "Niri";
+        comment = "A scrollable-tiling Wayland compositor.";
+        binPath = "${pkgs.niri}/bin/niri";
+      };
+      labwc = {
+        prettyName = "Labwc";
+        comment = "A Wayland window-stacking compositor.";
+        binPath = "${pkgs.labwc}/bin/labwc";
       };
     };
   };
