@@ -47,4 +47,8 @@
       }
     ];
   };
+
+  programs.lazygit = {
+    enable = true;
+  };
 }
