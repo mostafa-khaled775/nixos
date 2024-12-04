@@ -11,6 +11,7 @@
     ./thunderbird.nix
     ./discord.nix
     ./zulip.nix
+    ./ente-auth.nix
 
     # editors
     ./zed.nix
