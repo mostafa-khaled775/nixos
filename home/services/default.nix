@@ -6,5 +6,6 @@
     ./mako.nix
     ./kanshi.nix
     ./libsecret.nix
+    ./keyring.nix
   ];
 }
