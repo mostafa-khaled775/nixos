@@ -7,7 +7,7 @@
 {
   stylix = {
     enable = true;
-    image = "${inputs.wallpapers}/minimalistic/catppuccin_triangle.png";
+    image = "${inputs.wallpapers}/operating-systems/1920x1080/nixos.png";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     fonts = {
       sizes = {

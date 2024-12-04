@@ -901,16 +901,16 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1642394192,
-        "narHash": "sha256-RbaoWKGmvvxIo8hsRiMhsojeViuxFDsStTHhoMwGQnw=",
-        "owner": "VipinVIP",
-        "repo": "wallpapers",
-        "rev": "283af350981b2335f50239096927fd6cf553a82d",
+        "lastModified": 1710035844,
+        "narHash": "sha256-yfbSOsj3KfzYiVBOTyeNgeBCSexRERhZOps9Plenqlo=",
+        "owner": "dxnst",
+        "repo": "nord-backgrounds",
+        "rev": "8bbe9a13c7003dab2ff2c9f5afe7d5f527f046fe",
         "type": "github"
       },
       "original": {
-        "owner": "VipinVIP",
-        "repo": "wallpapers",
+        "owner": "dxnst",
+        "repo": "nord-backgrounds",
         "type": "github"
       }
     }

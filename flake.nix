@@ -15,7 +15,7 @@
     agenix.url = "github:ryantm/agenix";
     stylix.url = "github:danth/stylix";
     wallpapers = {
-      url = "github:VipinVIP/wallpapers";
+      url = "github:dxnst/nord-backgrounds";
       flake = false;
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
