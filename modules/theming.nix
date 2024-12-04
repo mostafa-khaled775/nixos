@@ -36,6 +36,7 @@
         theme = {
           mode = "dark";
           dark = "Catppuccin Mocha";
+          light = "Catppuccin Latte";
         };
         ui_font_family = config.stylix.fonts.sansSerif.name;
         ui_font_size = config.stylix.fonts.sizes.applications;
