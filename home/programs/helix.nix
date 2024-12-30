@@ -95,7 +95,7 @@
 
       dot-language-server
 
-      # python 
+      # python
       python312Packages.python-lsp-server
       python312Packages.rope
       python312Packages.pyflakes
