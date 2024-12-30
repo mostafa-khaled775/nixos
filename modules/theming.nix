@@ -17,8 +17,12 @@
         popups = 11;
       };
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        name = "JetBrainsMono Nerd Font";
+        package = pkgs.nerd-fonts.fira-code;
+        name = "Fira Code Nerd Font";
+      };
+      sansSerif = {
+        package = pkgs.cantarell-fonts;
+        name = "Cantarell";
       };
     };
   };
