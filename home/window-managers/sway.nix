@@ -17,7 +17,7 @@
         };
         "type:keyboard" = {
           xkb_layout = "us,eg";
-          xkb_options = "ctrl:nocaps,grp:ctrl_space_toggle";
+          xkb_options = "ctrl:nocaps";
         };
       };
     };
