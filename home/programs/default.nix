@@ -16,6 +16,10 @@
     # editors
     ./zed.nix
     ./helix.nix
+    ./emacs.nix
+
+    # spell checking
+    ./spell.nix
   ];
 
   programs = {

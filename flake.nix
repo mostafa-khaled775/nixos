@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,7 +69,6 @@
 
           ./secrets
           ./modules/uwsm.nix
-          ./modules/hosts.nix
           ./modules/services.nix
           ./modules/system.nix
           ./modules/virtualization.nix
@@ -74,6 +77,7 @@
           ./modules/v4l2loopback.nix
           ./modules/theming.nix
           ./modules/unfree.nix
+          ./overlays.nix
           ./hosts/acer-nitro5
 
           home-manager.nixosModules.home-manager
